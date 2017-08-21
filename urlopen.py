@@ -35,7 +35,7 @@ def print_items(items):
 
 
 def main(url):
-    words = fetch_words()
+    words = fetch_words()  
     print_items(words)
 
 
