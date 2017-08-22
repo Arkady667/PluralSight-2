@@ -1,25 +1,25 @@
+# python2
 # coding=utf-8
+
+"""Retrieve and print words form a URL.
+
+Usage:
+    python2 urlopen.py <URL>
 """
-The with statement clarifies code that previously would use try...finally blocks to ensure that clean-up code is executed.
-In this section, I’ll discuss the statement as it will commonly be used. In the next section, I’ll examine the implementation
-details and show how to write objects for use with this statement.
 
-The with statement is a control-flow structure whose basic structure is:
-
-with expression [as variable]:
-    with-block
-
-The expression is evaluated, and it should result in an object that supports the context management protocol
-(that is, has __enter__() and __exit__() methods).
-
-with jest uzywane do pracy z niezarzadzanymi zasobami np. strumienie plikow
-pozwala na upewnienie sie ze zrodlo jest "wyczyszczone" kiedy kod zaczyna dzialac
-"""
 import sys
 from urllib import urlopen
 
 
 def fetch_words(url):
+    """Fetch a list of words from a URL.
+
+    Args:
+        url: The URL of a UTF-8 text doc.
+
+    Returns:
+        A list of strings containing the words from the doc.
+    """
     story = urlopen(url)
     story_words = []
     for line in story:
@@ -30,13 +30,25 @@ def fetch_words(url):
 
 
 def print_items(items):
+    """Print items one per line
+
+    Args:
+        An iterable series of printable items.
+    """
     for item in items:
         print(item)
 
 
 def main(url):
-    words = fetch_words()  
+    """
+    Print each word from a text doc from URL.
+
+    Args:
+        url: The url of a UTF-8 text doc.
+    """
+    words = fetch_words(url)
     print_items(words)
+    help(urlopen)
 
 
 if __name__ == "__main__":
